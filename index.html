@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUJER BONITA COMO TÚ</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Carrousel CSS -->
+    <link rel="stylesheet" href="assets/css/carrousel.css">
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-logo"><a href="index.html"> <img src="../assets/img/logo/logo.png" alt="Logo"></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active-link">Inicio</a></li>
+                <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                <li><a href="mi-historia.html">Mi Historia</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="actividades.html" class="dropdown-toggle">Actividades<i class='bx bx-chevron-down'></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="servicios-integrados.html">Servicios Integrados</a></li>
+                        <li><a href="consejo-directivo.html">Consejo Directivo</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>MUJER BONITA COMO TÚ</h1>
+            <p>TE INVITO A SER FELIZ</p>
+        </div>
+    </section>
+
+    <main>
+        <!-- Sección 1 -->
+        <div class="section">
+            <div class="section-one">
+                <h2>CONOCE TODO LO QUE TENEMOS PARA TI.</h2>
+            </div>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section">
+            <div class="section-two">
+                <h2>TU DECIDES CAMBIAR TU VIDA...</h2>
+            </div>
+        </div>
+
+        <!-- Carrousel -->
+        <div class="section">
+            <div class="carrousel-section">
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel">
+                    </div>
+                </div>
+
+                <div class="carousel-nav">
+                    <button class="btn-1" id="prevBtn">&#10094;</button>
+                    <button class="btn-2" id="nextBtn">&#10095;</button>
+                </div>
+
+                <div class="thumbnails-container">
+                    <div class="thumbnails" id="thumbnails">
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal" id="modal">
+                    <span class="close" id="close">&times;</span>
+                    <span class="nav prev" id="prevModal">&#10094;</span>
+                    <img id="modalImage" src="" alt="Imagen en modal">
+                    <span class="nav next" id="nextModal">&#10095;</span>
+                </div>
+
+                <!-- Alianzas -->
+                <div class="alianzas">
+                    <h2>Nuestras alianzas</h2>
+                    
+                    <div class="brand-showcase">
+                        <div class="brand-track" id="brandTrack">
+                            <!-- Primer grupo -->
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-1.avif" alt="Marca 1">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-2.jpg" alt="Marca 2">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-3.jpg" alt="Marca 3">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-4.avif" alt="Marca 4">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-5.avif" alt="Marca 5">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-6.avif" alt="Marca 6">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-7.jpg" alt="Marca 7">
+                            </div>
+
+                            <!-- Segundo grupo -->
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-1.avif" alt="Marca 1">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-2.jpg" alt="Marca 2">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-3.jpg" alt="Marca 3">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-4.avif" alt="Marca 4">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-5.avif" alt="Marca 5">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-6.avif" alt="Marca 6">
+                            </div>
+                            <div class="brand-item"><img src="assets/img/inicio/marcas/marca-7.jpg" alt="Marca 7">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section">
+            <div class="section-three"></div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <a href="https://www.instagram.com/mujerbonitacomotu/" title="Instagram" target="_blank"><i
+                    class='bx bxl-instagram'></i></a>
+            <a href="https://www.facebook.com/mujerbonitacomotu/" title="Facebook" target="_blank"><i
+                    class='bx bxl-facebook'></i></a>
+        </footer>
+    </main>
+
+    <!-- Botón Ir arriba -->
+    <button id="backToTop" class="back-to-top" aria-label="Ir arriba" title="Ir arriba">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 19V5" />
+            <path d="M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Caarrousel JS -->
+    <script src="assets/js/carrousel.js"></script>
+</body>
+
+</html>
