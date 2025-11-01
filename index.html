@@ -157,19 +157,25 @@
     <!-- Caarrousel JS -->
     <script src="assets/js/carrousel.js"></script>
 
-    <div id="fb-root">Prueba</div>
-    <div id="fb-customer-chat" class="fb-customerchat"></div>
+    <!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
 
-    <!-- Chat -->
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
     <script>
         var chatbox = document.getElementById('fb-customer-chat');
         chatbox.setAttribute("page_id", "100063038928951");
         chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
 
+    <!-- SDK de Facebook -->
+    <script>
         window.fbAsyncInit = function () {
             FB.init({
                 xfbml: true,
-                version: 'v18.0'
+                version: 'v21.0'
             });
         };
 
@@ -177,7 +183,7 @@
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js";
+            js.src = 'https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
