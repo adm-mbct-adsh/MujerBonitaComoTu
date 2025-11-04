@@ -199,7 +199,7 @@
   box-shadow: 0 4px 14px rgba(0,0,0,0.3);
   overflow: hidden;
   border: 2px solid #f58cb6;
-  z-index: 9999;
+  z-index: 999999 !important;
   display: none;
   flex-direction: column;
 }
@@ -232,12 +232,25 @@
       border-top: 1px solid #ddd;
     }
 
-    #serena-input {
-      flex: 1;
-      border: none;
-      padding: 10px;
-      outline: none;
-    }
+#serena-input {
+  border-top: 1px solid #eee;
+  padding: 10px;
+  display: flex;
+  background: white;
+  position: relative;
+  z-index: 99999;
+}
+
+#serena-text {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 14px;
+  z-index: 99999;
+  background: white;
+}
+
 
     #serena-send {
       background: #f58cb6;
