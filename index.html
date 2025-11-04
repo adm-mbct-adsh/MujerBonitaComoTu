@@ -158,18 +158,12 @@
     <script src="assets/js/carrousel.js"></script>
 
     <!-- Serena - Chat Widget -->
-<script>
-  window.SerenaConfig = {
-    botName: "Serena",
-    welcomeMessage: "Hola hermosa, estoy aquí para acompañarte. ¿Cómo te sientes hoy?",
-    messengerFallback: "https://m.me/mujerbonitacomotu",
-  };
-</script>
+    <script>
+        (function () {
+            const API_URL = "https://serena.admmujerbonitacomotu.workers.dev";
 
-<script>
-(function(){
-  const style = document.createElement("style");
-  style.textContent = `
+            const style = document.createElement("style");
+            style.textContent = `
     #serena-bubble {
       position: fixed;
       bottom: 20px;
@@ -182,8 +176,10 @@
       font-size: 22px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
       transition: 0.3s;
+      z-index: 9999;
     }
     #serena-bubble:hover { transform: scale(1.05); }
+
     #serena-window {
       display: none;
       position: fixed;
@@ -196,7 +192,11 @@
       box-shadow: 0 4px 14px rgba(0,0,0,0.3);
       overflow: hidden;
       border: 2px solid #f58cb6;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
     }
+
     #serena-header {
       background: #f58cb6;
       color: white;
@@ -204,29 +204,35 @@
       text-align: center;
       font-weight: 600;
     }
+
     #serena-chat {
+      flex: 1;
       padding: 12px;
-      height: 310px;
       overflow-y: auto;
       font-size: 15px;
       line-height: 1.4;
     }
+
     .serena-msg {
       margin-bottom: 12px;
       padding: 8px 12px;
       background: #ffe7f1;
       border-radius: 8px;
+      white-space: pre-wrap;
     }
+
     #serena-input-box {
       display: flex;
       border-top: 1px solid #ddd;
     }
+
     #serena-input {
       flex: 1;
       border: none;
       padding: 10px;
       outline: none;
     }
+
     #serena-send {
       background: #f58cb6;
       border: none;
@@ -234,21 +240,24 @@
       padding: 10px 14px;
       cursor: pointer;
     }
+
     #serena-help {
-      margin-top: 6px;
+      margin: 6px 0;
       text-align: center;
       font-size: 13px;
       cursor: pointer;
       color: #f58cb6;
     }
   `;
-  document.head.appendChild(style);
+            document.head.appendChild(style);
 
-  document.body.insertAdjacentHTML("beforeend", `
+            document.body.insertAdjacentHTML("beforeend", `
     <div id="serena-bubble">💗</div>
     <div id="serena-window">
       <div id="serena-header">Serena</div>
-      <div id="serena-chat"><div class="serena-msg">${window.SerenaConfig.welcomeMessage}</div></div>
+      <div id="serena-chat">
+        <div class="serena-msg">${window.SerenaConfig.welcomeMessage}</div>
+      </div>
       <div id="serena-input-box">
         <input id="serena-input" placeholder="Escribe aquí..."/>
         <button id="serena-send">Enviar</button>
@@ -257,33 +266,43 @@
     </div>
   `);
 
-  const bubble = document.querySelector("#serena-bubble");
-  const win = document.querySelector("#serena-window");
-  const chat = document.querySelector("#serena-chat");
-  const input = document.querySelector("#serena-input");
-  const send = document.querySelector("#serena-send");
-  const help = document.querySelector("#serena-help");
+            const bubble = document.querySelector("#serena-bubble");
+            const win = document.querySelector("#serena-window");
+            const chat = document.querySelector("#serena-chat");
+            const input = document.querySelector("#serena-input");
+            const send = document.querySelector("#serena-send");
+            const help = document.querySelector("#serena-help");
 
-  bubble.onclick = () => win.style.display = (win.style.display === "none" ? "block" : "none");
-  send.onclick = () => handle();
-  input.onkeypress = e => e.key === "Enter" && handle();
-  help.onclick = () => window.open(window.SerenaConfig.messengerFallback, "_blank");
+            bubble.onclick = () => win.style.display = (win.style.display === "none" ? "flex" : "none");
+            send.onclick = () => handle();
+            input.onkeypress = e => e.key === "Enter" && handle();
+            help.onclick = () => window.open(window.SerenaConfig.messengerFallback, "_blank");
 
-  function handle(){
-    const text = input.value.trim();
-    if(!text) return;
-    chat.innerHTML += `<div class="serena-msg" style="background:#d6f3ff;">${text}</div>`;
-    input.value="";
-    chat.scrollTop = chat.scrollHeight;
+            async function handle() {
+                const text = input.value.trim();
+                if (!text) return;
 
-    // Lógica de respuesta con IA real se conectará aquí en siguiente paso
-    setTimeout(()=>{
-      chat.innerHTML += `<div class="serena-msg">Estoy contigo. Cuéntame más sobre cómo te estás sintiendo en este momento.</div>`;
-      chat.scrollTop = chat.scrollHeight;
-    },600);
-  }
-})();
-</script>
+                // Mensaje Usuario
+                chat.innerHTML += `<div class="serena-msg" style="background:#d6f3ff;">${text}</div>`;
+                input.value = "";
+                chat.scrollTop = chat.scrollHeight;
+
+                // Llamada real a tu Worker
+                const res = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: text })
+                });
+
+                const data = await res.json();
+                const reply = data.reply || "Gracias por compartir. Estoy aquí contigo, cuéntame más.";
+
+                // Respuesta Serena
+                chat.innerHTML += `<div class="serena-msg">${reply}</div>`;
+                chat.scrollTop = chat.scrollHeight;
+            }
+        })();
+    </script>
 
 
 </body>
