@@ -1205,6 +1205,27 @@
             font-size: 33px;
             width: 60%;
         }
+
+        /* Botón Ir Arriba */
+        .back-to-top {
+            position: fixed;
+            right: 1.9rem !important;
+            bottom: 1.9rem !important;
+            width: 48px !important;
+            height: 48px !important;
+            display: grid;
+            place-items: center;
+            border: none;
+            border-radius: 50px;
+            color: var(--text-sections);
+            background-color: var(--color-hover);
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.7s ease, opacity 0.7s ease, visibility 0.7s ease, background-color 0.7s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+        }
     }
 
     /* 380px */
